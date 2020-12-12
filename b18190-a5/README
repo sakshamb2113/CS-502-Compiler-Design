@@ -1,0 +1,12 @@
+A5 Project - Project Lambda
+This project includes a report and some test cases based on my study of the project lambda. Project Lambda is one of the many projects which now constitute openJDK and have become a part of the java language.
+
+-In order to set up this project you would need to get any version of java after java 8
+-To install latest java version click on the below link. The page has instructions for various operating systems.
+    https://openjdk.java.net/install/
+-To execute the test cases simply compile and run the .java files
+    javac filename.java
+    java filename
+
+Here is the command you would have to enter in the terminal to install jdk 8
+sudo apt-get install openjdk-8-jre

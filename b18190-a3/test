@@ -1,0 +1,12 @@
+class Factorial{
+    public static
+}
+
+num=10;
+num2=14;
+if(num<1){
+	num=4;
+}
+else{
+	num2=14;
+}

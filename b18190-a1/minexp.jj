@@ -1,0 +1,60 @@
+options {
+    JAVA_UNICODE_ESCAPE = true;
+}
+
+PARSER_BEGIN(CalcExpr)
+    public class CalcExpr {}
+PARSER_END(CalcExpr)
+
+    SKIP : /* WHITE SPACE */
+{
+    " "
+        | "\t"
+        | "\n"
+        | "\r"
+        | "\f"
+}
+
+SPECIAL_TOKEN : /* COMMENTS */
+{
+    <SINGLE_LINE_COMMENT: "//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+        | <FORMAL_COMMENT: "/**" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+        | <MULTI_LINE_COMMENT: "/*" (~["*"])* "*" ("*" | (~["*","/"] (~["*"])* "*"))* "/">
+}
+
+TOKEN : 
+{
+    <HOUSE_NAME: "Lannister" | "Baratheon" | "Greyjoy" | "Stark" | "Targaryen" | "Tyrell">
+  |
+    <NAME: (["A"-"Z", "a"-"z"]) (["A"-"Z", "a"-"z"] | ["0"-"9"])* >
+  |
+    <OPERATOR: "<p" | ">p" | "<k" | ">k" | "=p" | "=k" >
+}
+
+/************************************
+ * The MiniExpr Grammar Starts Here *
+ ************************************/
+
+// BNF
+
+void Goal() :
+{}
+{
+        ( Housedeclarations() )* 
+        ( facts() )*
+        <EOF>
+}
+
+void Housedeclarations() :
+{}
+{
+    <HOUSE_NAME> <NAME> ";"
+}
+
+void facts() :
+{}
+{
+    <NAME> <OPERATOR> <NAME> ";"
+}
+
+
